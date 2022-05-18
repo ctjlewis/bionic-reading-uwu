@@ -1,0 +1,46 @@
+{
+  "name": "bionic-reading",
+  "platform": "node",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./dist/index.js",
+    "./*": "./dist/*/index.js"
+  },
+  "scripts": {
+    "dev": "tsmodule dev",
+    "build": "tsmodule build",
+    "test": "ava",
+    "lint": "eslint src --fix",
+    "pretest": "tsmodule build -r",
+    "prepublishOnly": "yarn build && yarn test"
+  },
+  "ava": {
+    "timout": 240000,
+    "files": [
+      "test/**/*.test.ts"
+    ],
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--no-warnings",
+      "--loader=@tsmodule/tsmodule"
+    ]
+  },
+  "devDependencies": {
+    "@tsmodule/tsmodule": "^40.0.2",
+    "@types/node": "^17.0.34",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "ava": "^4.2.0",
+    "eslint": "^8.15.0",
+    "typescript": "^4.6.4"
+  }
+}
