@@ -14,11 +14,11 @@ const splitMapJoin = (
     .join(char);
 };
 
-const bionicTextUwu = splitMapJoin(
+export const bionicTextUwu = splitMapJoin(
   text,
   "\n",
-  (substring: string) => splitMapJoin(
-    substring,
+  (line: string) => splitMapJoin(
+    line,
     " ",
     (word: string) => {
       const firstHalf = word.substring(0, Math.ceil(word.length / 2));
@@ -28,6 +28,3 @@ const bionicTextUwu = splitMapJoin(
 );
 
 console.log(bionicTextUwu);
-console.log();
-
-export {};
